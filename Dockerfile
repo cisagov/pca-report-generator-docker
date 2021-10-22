@@ -30,12 +30,12 @@ RUN addgroup --system --gid ${CISA_UID} cisa \
 # openssl \
 # py-pip
 
-WORKDIR ${CISA_HOME}
-
 RUN apt-get install wget
 
 RUN apt-get update && \
  apt-get install --no-install-recommends -y texlive texlive-xetex texlive-bibtex-extra
+
+WORKDIR $PCA_REPORT_TOOLS_SRC
 
 RUN wget -O sourcecode.tgz https://github.com/cisagov/pca-report-library/archive/v${VERSION}.tar.gz && \
   tar xzf sourcecode.tgz --strip-components=1 && \
@@ -44,17 +44,9 @@ RUN wget -O sourcecode.tgz https://github.com/cisagov/pca-report-library/archive
 
 RUN fc-cache -fsv
 
-WORKDIR $PCA_REPORT_TOOLS_SRC
-COPY . $PCA_REPORT_TOOLS_SRC
-
-RUN pip install --no-cache-dir /home/cisa/
-RUN mkdir ${PCA_REPORT_TOOLS_SRC}/var
-RUN mkdir ${PCA_REPORT_TOOLS_SRC}/var/getenv
+RUN pip install --no-cache-dir .
 RUN chmod +x ${PCA_REPORT_TOOLS_SRC}/var/getenv
 RUN ln -snf ${PCA_REPORT_TOOLS_SRC}/var/getenv /usr/local/bin
-
-USER root
-RUN chmod +x /home/cisa/var/getenv
 
 USER cisa
 WORKDIR $CISA_HOME
