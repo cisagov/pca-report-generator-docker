@@ -1,4 +1,4 @@
-# pca-report-generator-docker 💀🐳 #
+# pca-report-generator-docker #
 
 [![GitHub Build Status](https://github.com/cisagov/pca-report-generator-docker/workflows/build/badge.svg)](https://github.com/cisagov/pca-report-generator-docker/actions/workflows/build.yml)
 [![CodeQL](https://github.com/cisagov/pca-report-generator-docker/workflows/CodeQL/badge.svg)](https://github.com/cisagov/pca-report-generator-docker/actions/workflows/codeql-analysis.yml)
@@ -10,21 +10,45 @@
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/cisagov/example)](https://hub.docker.com/r/cisagov/example)
 [![Platforms](https://img.shields.io/badge/platforms-amd64%20%7C%20arm%2Fv6%20%7C%20arm%2Fv7%20%7C%20arm64%20%7C%20ppc64le%20%7C%20s390x-blue)](https://hub.docker.com/r/cisagov/pca-report-generator-docker/tags)
 
-This is a Docker skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) GitHub Docker project
-started.  This skeleton project contains [licensing
-information](LICENSE), as well as [pre-commit hooks](https://pre-commit.com)
-and [GitHub Actions](https://github.com/features/actions) configurations
-appropriate for Docker containers and the major languages that we use.
+This is a Docker project that uses the pca-report-library package.
+
+The package is used for generating PCA reports with LaTeX and supporting scripts.
 
 ## Running ##
 
-### Running with Docker ###
+The following docker commands are available.
 
-To run the `cisagov/example` image via Docker:
+An alias can also be set beforehand to remove redundancy.
+
+`pca-report-generator` - Builds PCA LaTeX report and complies the PDF
 
 ```console
-docker run cisagov/example:0.0.1
+docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generator
+```
+
+`pca-report-templates` - Exports the Report Mustache template and Manual data
+file template
+
+```console
+docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-templates
+```
+
+`pca-report-compiler` -  Compiles a PCA LaTeX report file,  still in development.
+
+```console
+docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-compiler
+```
+
+`pca-report-generator-bash` - Will SSH into the container
+
+```console
+docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generator-bash
+```
+
+For debuging purposes - Will SSH into the container without an extra command
+
+```console
+docker run --rm -it --entrypoint bash cisagov/pca-report-generator
 ```
 
 ### Running with Docker Compose ###
