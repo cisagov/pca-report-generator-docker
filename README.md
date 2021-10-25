@@ -154,6 +154,7 @@ environment variables.  See the
 
 1. Recreate and run the container by following the [previous instructions](#running-with-docker).
 
+<!-- Not yet pushed to Docker Hub. No Image tags.
 ## Image tags ##
 
 The images of this container are tagged with [semantic
@@ -171,13 +172,13 @@ containerize.  It is recommended that most users use a version tag (e.g.
 |`cisagov/example:latest`| The most recent release image pushed to a container registry.  Pulling an image using the `:latest` tag [should be avoided.](https://vsupalov.com/docker-latest-tag/) |
 
 See the [tags tab](https://hub.docker.com/r/cisagov/example/tags) on Docker
-Hub for a list of all the supported tags.
+Hub for a list of all the supported tags. -->
 
 ## Volumes ##
 
 | Mount point | Purpose        |
 |-------------|----------------|
-| `/var/log`  |  Log storage   |
+| `/home/cisa`  |  Log storage   |
 
 ## Environment variables ##
 
@@ -199,18 +200,7 @@ Hub for a list of all the supported tags.
 |--------------|---------|
 | `quote.txt` | Replaces the secret stored in the example library's package data. |
 
-## Building from source ##
-
-Build the image locally using this git repository as the [build context](https://docs.docker.com/engine/reference/commandline/build/#git-repositories):
-
-```console
-docker build \
-  --build-arg VERSION=0.0.1 \
-  --tag cisagov/example:0.0.1 \
-  https://github.com/cisagov/example.git#develop
-```
-
-## Cross-platform builds ##
+<!-- ## Cross-platform builds ##
 
 To create images that are compatible with other platforms, you can use the
 [`buildx`](https://docs.docker.com/buildx/working-with-buildx/) feature of
@@ -224,13 +214,13 @@ Docker:
     cd example
     ```
 
-1. Create the `Dockerfile-x` file with `buildx` platform support:
+2. Create the `Dockerfile-x` file with `buildx` platform support:
 
     ```console
     ./buildx-dockerfile.sh
     ```
 
-1. Build the image using `buildx`:
+3. Build the image using `buildx`:
 
     ```console
     docker buildx build \
@@ -239,14 +229,7 @@ Docker:
       --build-arg VERSION=0.0.1 \
       --output type=docker \
       --tag cisagov/example:0.0.1 .
-    ```
-
-## New repositories from a skeleton ##
-
-Please see our [Project Setup guide](https://github.com/cisagov/development-guide/tree/develop/project_setup)
-for step-by-step instructions on how to start a new repository from
-a skeleton. This will save you time and effort when configuring a
-new repository!
+    ``` -->
 
 ## Contributing ##
 
