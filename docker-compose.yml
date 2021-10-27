@@ -8,14 +8,14 @@ secrets:
     file: ./src/secrets/quote.txt
 
 services:
-  example:
+  pca-report-library:
     # Run the container normally
     build:
       # VERSION must be specified on the command line:
       # e.g., --build-arg VERSION=0.0.1
       context: .
       dockerfile: Dockerfile
-    image: cisagov/example
+    image: cisagov/pca-report-library
     init: true
     restart: "no"
     environment:
@@ -24,9 +24,9 @@ services:
       - source: quote_txt
         target: quote.txt
 
-  example-version:
+  pca-report-library-version:
     # Run the container to collect version information
-    image: cisagov/example
+    image: cisagov/pca-report-library
     init: true
     restart: "no"
     command: --version
