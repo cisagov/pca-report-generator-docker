@@ -60,18 +60,14 @@ docker run --rm -it --entrypoint bash cisagov/pca-report-generator
     version: "3.7"
 
     services:
-      example:
-        image: cisagov/example:0.0.1
+      pca-report-library:
+        image: cisagov/pca-report-library
         volumes:
           - type: bind
             source: <your_log_dir>
-            target: /var/log
+            target: /home/cisa
         environment:
           - ECHO_MESSAGE="Hello from docker-compose"
-        ports:
-          - target: 8080
-            published: 8080
-            protocol: tcp
     ```
 
 1. Start the container and detach:
@@ -105,18 +101,14 @@ environment variables.  See the
         file: quote.txt
 
     services:
-      example:
-        image: cisagov/example:0.0.1
+      pca-report-library:
+        image: cisagov/pca-report-library
         volumes:
           - type: bind
             source: <your_log_dir>
-            target: /var/log
+            target: /home/cisa
         environment:
           - ECHO_MESSAGE="Hello from docker-compose"
-        ports:
-          - target: 8080
-            published: 8080
-            protocol: tcp
         secrets:
           - source: quote_txt
             target: quote.txt
@@ -149,7 +141,7 @@ environment variables.  See the
 1. Pull the new image:
 
     ```console
-    docker pull cisagov/example:0.0.1
+    docker pull cisagov/pca-report-library
     ```
 
 1. Recreate and run the container by following the [previous instructions](#running-with-docker).
