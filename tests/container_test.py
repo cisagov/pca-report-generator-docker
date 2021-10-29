@@ -1,5 +1,5 @@
 #!/usr/bin/env pytest -vs
-"""Tests for example container."""
+"""Tests for pca-report-library container."""
 
 # Standard Python Libraries
 import os
@@ -45,7 +45,7 @@ def test_wait_for_ready(main_container):
 
 def test_wait_for_exits(main_container, version_container):
     """Wait for containers to exit."""
-    assert main_container.wait() == 127, "Container service (main) did not exit cleanly"
+    assert main_container.wait() == 0, "Container service (main) did not exit cleanly"
     assert (
         version_container.wait() == 0
     ), "Container service (version) did not exit cleanly"
