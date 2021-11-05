@@ -20,7 +20,7 @@ The following Docker commands are available.
 
 An alias can also be set beforehand to remove redundancy.
 
-`pca-report-generator` - Builds PCA LaTeX report and complies the PDF
+`pca-report-generator` - Creates a PCA report as a PDF
 
 ```console
 docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generator
