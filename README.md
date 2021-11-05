@@ -212,7 +212,7 @@ Docker:
     ./buildx-dockerfile.sh
     ```
 
-3. Build the image using `buildx`:
+1. Build the image using `buildx`:
 
     ```console
     docker buildx build \
