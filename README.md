@@ -146,7 +146,6 @@ environment variables.  See the
 
 1. Recreate and run the container by following the [previous instructions](#running-with-docker).
 
-<!-- Not yet pushed to Docker Hub. No Image tags.
 ## Image tags ##
 
 The images of this container are tagged with [semantic
