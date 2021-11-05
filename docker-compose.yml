@@ -15,7 +15,7 @@ services:
       # e.g., --build-arg VERSION=0.0.1
       context: .
       dockerfile: Dockerfile
-    image: cisagov/pca-report-library
+    image: cisagov/pca-report-library:0.0.1
     init: true
     restart: "no"
     environment:
