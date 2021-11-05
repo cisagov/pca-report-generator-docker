@@ -206,7 +206,7 @@ Docker:
     cd example
     ```
 
-2. Create the `Dockerfile-x` file with `buildx` platform support:
+1. Create the `Dockerfile-x` file with `buildx` platform support:
 
     ```console
     ./buildx-dockerfile.sh
