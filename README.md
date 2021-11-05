@@ -61,7 +61,7 @@ docker run --rm -it --entrypoint bash cisagov/pca-report-generator
 
     services:
       pca-report-library:
-        image: cisagov/pca-report-library
+        image: cisagov/pca-report-library:0.0.1
         volumes:
           - type: bind
             source: <your_log_dir>
