@@ -16,7 +16,7 @@ The package is used for generating PCA reports with LaTeX and supporting scripts
 
 ## Running ##
 
-The following docker commands are available.
+The following Docker commands are available.
 
 An alias can also be set beforehand to remove redundancy.
 
