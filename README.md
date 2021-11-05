@@ -16,11 +16,11 @@ The package is used for generating PCA reports with LaTeX and supporting scripts
 
 ## Running ##
 
-The following docker commands are available.
+The following Docker commands are available.
 
 An alias can also be set beforehand to remove redundancy.
 
-`pca-report-generator` - Builds PCA LaTeX report and complies the PDF
+`pca-report-generator` - Creates a PCA report as a PDF
 
 ```console
 docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generator
@@ -39,7 +39,7 @@ docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-template
 docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-compiler
 ```
 
-`pca-report-generator-bash` - Will SSH into the container
+`pca-report-generator-bash` - Starts up a `bash` shell in the container
 
 ```console
 docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generator-bash

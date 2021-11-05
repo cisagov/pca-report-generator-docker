@@ -34,7 +34,7 @@ VOLUME $CISA_HOME
 
 COPY src/version.txt /src
 
-WORKDIR $PCA_REPORT_TOOLS_SRC
+WORKDIR ${PCA_REPORT_TOOLS_SRC}
 
 RUN wget -O sourcecode.tgz https://github.com/cisagov/pca-report-library/archive/v${VERSION}.tar.gz && \
   tar xzf sourcecode.tgz --strip-components=1 && \
@@ -48,5 +48,5 @@ RUN chmod +x ${PCA_REPORT_TOOLS_SRC}/var/getenv
 RUN ln -snf ${PCA_REPORT_TOOLS_SRC}/var/getenv /usr/local/bin
 
 USER cisa
-WORKDIR $CISA_HOME
+WORKDIR ${CISA_HOME}
 CMD ["getenv"]
