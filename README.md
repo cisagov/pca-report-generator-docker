@@ -174,17 +174,19 @@ Hub for a list of all the supported tags. -->
 
 ## Environment variables ##
 
-### Required ###
+<!-- ### Required ###
 
 | Name  | Purpose | Default |
 |-------|---------|---------|
-| `PCA_GENERATOR_IMAGE` | Docker image name. | `cisagov/pca-report-generator` |
+| `` |  |  | -->
 
 ### Optional ###
 
 | Name  | Purpose | Default |
 |-------|---------|---------|
 | `ECHO_MESSAGE` | Sets the message echoed by this container.  | `Hello World from Dockerfile` |
+| `PCA_REPORT_TOOLS_SRC` | Set as the directory for the pca-report-library codebase.  | `/usr/src/pca-report-tools` |
+| `CISA_HOME` | Sets up as the working directory.  | `/home/cisa` |
 
 ## Secrets ##
 
