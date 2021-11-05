@@ -26,7 +26,7 @@ services:
 
   pca-report-library-version:
     # Run the container to collect version information
-    image: cisagov/pca-report-library
+    image: cisagov/pca-report-library:0.0.1
     init: true
     restart: "no"
     command: pca-report-generator --version
