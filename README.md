@@ -45,12 +45,6 @@ docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-compiler
 docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generator-bash
 ```
 
-For debuging purposes - Will SSH into the container without an extra command
-
-```console
-docker run --rm -it --entrypoint bash cisagov/pca-report-generator
-```
-
 ### Running with Docker Compose ###
 
 1. Create a `docker-compose.yml` file similar to the one below to use [Docker Compose](https://docs.docker.com/compose/).
