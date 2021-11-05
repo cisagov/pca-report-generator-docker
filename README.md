@@ -39,7 +39,7 @@ docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-template
 docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-compiler
 ```
 
-`pca-report-generator-bash` - Will SSH into the container
+`pca-report-generator-bash` - Starts up a `bash` shell in the container
 
 ```console
 docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generator-bash
