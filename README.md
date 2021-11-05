@@ -61,7 +61,7 @@ docker run --rm -it --entrypoint bash cisagov/pca-report-generator
 
     services:
       pca-report-library:
-        image: cisagov/pca-report-library
+        image: cisagov/pca-report-library:0.0.1
         volumes:
           - type: bind
             source: <your_log_dir>
@@ -206,13 +206,13 @@ Docker:
     cd example
     ```
 
-2. Create the `Dockerfile-x` file with `buildx` platform support:
+1. Create the `Dockerfile-x` file with `buildx` platform support:
 
     ```console
     ./buildx-dockerfile.sh
     ```
 
-3. Build the image using `buildx`:
+1. Build the image using `buildx`:
 
     ```console
     docker buildx build \
