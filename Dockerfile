@@ -48,5 +48,5 @@ RUN chmod +x ${PCA_REPORT_TOOLS_SRC}/var/getenv
 RUN ln -snf ${PCA_REPORT_TOOLS_SRC}/var/getenv /usr/local/bin
 
 USER cisa
-WORKDIR $CISA_HOME
+WORKDIR ${CISA_HOME}
 CMD ["getenv"]
