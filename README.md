@@ -141,7 +141,7 @@ environment variables.  See the
 1. Pull the new image:
 
     ```console
-    docker pull cisagov/pca-report-library
+    docker pull cisagov/pca-report-library:0.0.1
     ```
 
 1. Recreate and run the container by following the [previous instructions](#running-with-docker).
