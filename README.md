@@ -180,11 +180,11 @@ Hub for a list of all the supported tags. -->
 |-------|---------|---------|
 | `PCA_GENERATOR_IMAGE` | Docker image name. | `cisagov/pca-report-generator` |
 
-<!-- ### Optional ### -->
+### Optional ###
 
-<!-- | Name  | Purpose | Default |
+| Name  | Purpose | Default |
 |-------|---------|---------|
-| `ECHO_MESSAGE` | Sets the message echoed by this container.  | `Hello World from Dockerfile` | -->
+| `ECHO_MESSAGE` | Sets the message echoed by this container.  | `Hello World from Dockerfile` |
 
 ## Secrets ##
 
