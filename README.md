@@ -192,7 +192,18 @@ Hub for a list of all the supported tags. -->
 |--------------|---------|
 | `quote.txt` | Replaces the secret stored in the example library's package data. |
 
-<!-- ## Cross-platform builds ##
+## Building from source ##
+
+Build the image locally using this git repository as the [build context](https://docs.docker.com/engine/reference/commandline/build/#git-repositories):
+
+```console
+docker build \
+  --build-arg VERSION=0.0.1 \
+  --tag cisagov/pca-report-library:0.0.1 \
+  https://github.com/cisagov/pca-report-library.git#develop
+```
+
+## Cross-platform builds ##
 
 To create images that are compatible with other platforms, you can use the
 [`buildx`](https://docs.docker.com/buildx/working-with-buildx/) feature of
@@ -202,7 +213,7 @@ Docker:
    or the command line:
 
     ```console
-    git clone https://github.com/cisagov/example.git
+    git clone https://github.com/cisagov/pca-report-library.git
     cd example
     ```
 
@@ -220,8 +231,8 @@ Docker:
       --platform linux/amd64 \
       --build-arg VERSION=0.0.1 \
       --output type=docker \
-      --tag cisagov/example:0.0.1 .
-    ``` -->
+      --tag cisagov/pca-report-library:0.0.1 .
+    ```
 
 ## Contributing ##
 
