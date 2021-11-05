@@ -164,7 +164,7 @@ containerize.  It is recommended that most users use a version tag (e.g.
 |`cisagov/example:latest`| The most recent release image pushed to a container registry.  Pulling an image using the `:latest` tag [should be avoided.](https://vsupalov.com/docker-latest-tag/) |
 
 See the [tags tab](https://hub.docker.com/r/cisagov/example/tags) on Docker
-Hub for a list of all the supported tags. -->
+Hub for a list of all the supported tags.
 
 ## Volumes ##
 
