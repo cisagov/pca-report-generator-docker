@@ -10,9 +10,8 @@
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/cisagov/example)](https://hub.docker.com/r/cisagov/example)
 [![Platforms](https://img.shields.io/badge/platforms-amd64%20%7C%20arm%2Fv6%20%7C%20arm%2Fv7%20%7C%20arm64%20%7C%20ppc64le%20%7C%20s390x-blue)](https://hub.docker.com/r/cisagov/pca-report-generator-docker/tags)
 
-This is a Docker project that uses the pca-report-library package.
-
-The package is used for generating PCA reports with LaTeX and supporting scripts.
+This is a Docker project that containerizes the [pca-report-library](https://github.com/cisagov/pca-report-library)
+package, which can be used to generate Phishing Campaign Assessment (PCA) reports.
 
 ## Running ##
 
