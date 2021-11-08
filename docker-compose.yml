@@ -20,9 +20,6 @@ services:
     restart: "no"
     environment:
       - ECHO_MESSAGE=Hello World from docker-compose!
-    secrets:
-      - source: quote_txt
-        target: quote.txt
 
   pca-report-library-version:
     # Run the container to collect version information
