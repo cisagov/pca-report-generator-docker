@@ -161,9 +161,10 @@ Hub for a list of all the supported tags.
 
 ## Volumes ##
 
-| Mount point | Purpose        |
+There are no volumes for this container.
+<!-- | Mount point | Purpose        |
 |-------------|----------------|
-| `/home/cisa`  |  Log storage   |
+| `/home/cisa`  |  Log storage   | -->
 
 ## Ports ##
 
