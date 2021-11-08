@@ -11,8 +11,6 @@ ARG VERSION
 # For a list of pre-defined annotation keys and value types see:
 # https://github.com/opencontainers/image-spec/blob/master/annotations.md
 # Note: Additional labels are added by the build workflow.
-LABEL git_commit=$GIT_COMMIT
-LABEL git_remote=$GIT_REMOTE
 LABEL org.opencontainers.image.authors="mark.feldhousen@cisa.dhs.gov"
 LABEL org.opencontainers.image.vendor="Cybersecurity and Infrastructure Security Agency"
 LABEL version=$VERSION
