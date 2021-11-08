@@ -69,45 +69,6 @@ docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generato
     docker-compose up --detach
     ```
 
-## Using secrets with your container ##
-
-There are no secrets for this container.
-<!-- This container also supports passing sensitive values via [Docker
-secrets](https://docs.docker.com/engine/swarm/secrets/).  Passing sensitive
-values like your credentials can be more secure using secrets than using
-environment variables.  See the
-[secrets](#secrets) section below for a table of all supported secret files.
-
-1. To use secrets, create a `quote.txt` file containing the values you want set:
-
-    ```text
-    Better lock it in your pocket.
-    ```
-
-1. Then add the secret to your `docker-compose.yml` file:
-
-    ```yaml
-    ---
-    version: "3.7"
-
-    secrets:
-      quote_txt:
-        file: quote.txt
-
-    services:
-      pca-report-library:
-        image: cisagov/pca-report-library
-        volumes:
-          - type: bind
-            source: <your_log_dir>
-            target: /home/cisa
-        environment:
-          - ECHO_MESSAGE="Hello from docker-compose"
-        secrets:
-          - source: quote_txt
-            target: quote.txt
-    ``` -->
-
 ## Updating your container ##
 
 ### Docker Compose ###
