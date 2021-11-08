@@ -4,8 +4,6 @@ ARG VERSION=0.0.1
 
 FROM python:3.9.6
 
-ARG GIT_COMMIT
-ARG GIT_REMOTE
 ARG VERSION
 
 # For a list of pre-defined annotation keys and value types see:
