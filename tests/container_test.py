@@ -11,9 +11,6 @@ import pytest
 ENV_VAR = "ECHO_MESSAGE"
 ENV_VAR_VAL = "Hello World from docker-compose!"
 READY_MESSAGE = "This is a debug message"
-SECRET_QUOTE = (
-    "There are no secrets better kept than the secrets everybody guesses."  # nosec
-)
 PCA_GENERATOR_QUOTE = (
     '# PCA_GENERATOR_IMAGE, defaults to "cisagov/pca-report-generator" if not set'
 )
