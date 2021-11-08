@@ -30,8 +30,6 @@ RUN apt-get install wget
 RUN apt-get update && \
  apt-get install --no-install-recommends -y texlive texlive-xetex texlive-bibtex-extra
 
-VOLUME $CISA_HOME
-
 COPY src/version.txt /src
 
 WORKDIR ${PCA_REPORT_TOOLS_SRC}
