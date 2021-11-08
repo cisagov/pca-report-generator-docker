@@ -71,7 +71,8 @@ docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generato
 
 ## Using secrets with your container ##
 
-This container also supports passing sensitive values via [Docker
+There are no secrets for this container.
+<!-- This container also supports passing sensitive values via [Docker
 secrets](https://docs.docker.com/engine/swarm/secrets/).  Passing sensitive
 values like your credentials can be more secure using secrets than using
 environment variables.  See the
@@ -105,7 +106,7 @@ environment variables.  See the
         secrets:
           - source: quote_txt
             target: quote.txt
-    ```
+    ``` -->
 
 ## Updating your container ##
 
