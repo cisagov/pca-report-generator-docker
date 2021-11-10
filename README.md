@@ -154,9 +154,9 @@ exposed port at 8080.
 
 | Name  | Purpose | Default |
 |-------|---------|---------|
+| `CISA_HOME` | Sets up as the working directory.  | `/home/cisa` |
 | `ECHO_MESSAGE` | Sets the message echoed by this container.  | `Hello World from Dockerfile` |
 | `PCA_REPORT_TOOLS_SRC` | Set as the directory for the pca-report-library codebase.  | `/usr/src/pca-report-tools` |
-| `CISA_HOME` | Sets up as the working directory.  | `/home/cisa` |
 
 ## Secrets ##
 
