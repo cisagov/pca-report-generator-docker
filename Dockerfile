@@ -1,4 +1,4 @@
-ARG VERSION=0.0.1
+ARG VERSION=unspecified
 
 FROM python:3.9.6
 
