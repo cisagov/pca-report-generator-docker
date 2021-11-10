@@ -1,5 +1,3 @@
-ARG GIT_COMMIT=unspecified
-ARG GIT_REMOTE=unspecified
 ARG VERSION=0.0.1
 
 FROM python:3.9.6
