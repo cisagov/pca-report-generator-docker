@@ -8,7 +8,6 @@ import time
 # Third-Party Libraries
 import pytest
 
-ENV_VAR = "ECHO_MESSAGE"
 ENV_VAR_VAL = "Hello World from docker-compose!"
 READY_MESSAGE = "This is a debug message"
 PCA_GENERATOR_QUOTE = (

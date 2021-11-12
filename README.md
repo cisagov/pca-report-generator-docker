@@ -59,8 +59,6 @@ docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generato
           - type: bind
             source: <your_log_dir>
             target: /home/cisa
-        environment:
-          - ECHO_MESSAGE="Hello from docker-compose"
     ```
 
 1. Start the container and detach:
@@ -155,7 +153,6 @@ exposed port at 8080.
 | Name  | Purpose | Default |
 |-------|---------|---------|
 | `CISA_HOME` | Sets up as the working directory.  | `/home/cisa` |
-| `ECHO_MESSAGE` | Sets the message echoed by this container.  | `Hello World from Dockerfile` |
 | `PCA_REPORT_TOOLS_SRC` | Set as the directory for the pca-report-library codebase.  | `/usr/src/pca-report-tools` |
 
 ## Secrets ##

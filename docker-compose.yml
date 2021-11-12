@@ -18,8 +18,6 @@ services:
     image: cisagov/pca-report-library
     init: true
     restart: "no"
-    environment:
-      - ECHO_MESSAGE=Hello World from docker-compose!
 
   pca-report-library-version:
     # Run the container to collect version information
