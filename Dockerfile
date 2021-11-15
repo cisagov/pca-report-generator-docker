@@ -12,7 +12,7 @@ LABEL org.opencontainers.image.vendor="Cybersecurity and Infrastructure Security
 
 ARG CISA_UID=421
 ENV CISA_HOME="/home/cisa"
-ENV PCA_REPORT_TOOLS_SRC="/usr/src/pca-report-tools"
+ENV PCA_REPORT_LIBRARY_SRC="/usr/src/pca-report-tools"
 ENV ECHO_MESSAGE="Hello World from Dockerfile"
 
 RUN addgroup --system --gid ${CISA_UID} cisa \
@@ -23,15 +23,15 @@ RUN apt-get update && \
 
 COPY src/version.txt /src
 
-WORKDIR ${PCA_REPORT_TOOLS_SRC}
+WORKDIR ${PCA_REPORT_LIBRARY_SRC}
 
 RUN wget -O sourcecode.tgz https://github.com/cisagov/pca-report-library/archive/v${VERSION}.tar.gz && \
   tar xzf sourcecode.tgz --strip-components=1 && \
   pip install --requirement requirements.txt && \
   cp -r src/pca_report_library/assets/fonts /usr/share/fonts/truetype/ncats && \
   fc-cache -fsv && \
-  chmod +x ${PCA_REPORT_TOOLS_SRC}/var/getenv && \
-  ln -snf ${PCA_REPORT_TOOLS_SRC}/var/getenv /usr/local/bin && \
+  chmod +x ${PCA_REPORT_LIBRARY_SRC}/var/getenv && \
+  ln -snf ${PCA_REPORT_LIBRARY_SRC}/var/getenv /usr/local/bin && \
   rm sourcecode.tgz
 
 USER cisa
