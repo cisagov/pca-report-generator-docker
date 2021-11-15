@@ -8,8 +8,6 @@ import time
 # Third-Party Libraries
 import pytest
 
-ENV_VAR_VAL = "Hello World from docker-compose!"
-READY_MESSAGE = "This is a debug message"
 PCA_GENERATOR_QUOTE = (
     '# PCA_GENERATOR_IMAGE, defaults to "cisagov/pca-report-generator" if not set'
 )
