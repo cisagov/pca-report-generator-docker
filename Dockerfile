@@ -18,10 +18,8 @@ ENV ECHO_MESSAGE="Hello World from Dockerfile"
 RUN addgroup --system --gid ${CISA_UID} cisa \
   && adduser --system --uid ${CISA_UID} --ingroup cisa cisa
 
-RUN apt-get install wget
-
 RUN apt-get update && \
- apt-get install --no-install-recommends -y texlive texlive-xetex texlive-bibtex-extra
+ apt-get install --no-install-recommends -y texlive texlive-bibtex-extra texlive-xetex wget
 
 COPY src/version.txt /src
 
@@ -29,14 +27,12 @@ WORKDIR ${PCA_REPORT_TOOLS_SRC}
 
 RUN wget -O sourcecode.tgz https://github.com/cisagov/pca-report-library/archive/v${VERSION}.tar.gz && \
   tar xzf sourcecode.tgz --strip-components=1 && \
+  pip install --requirement requirements.txt && \
   cp -r src/pca_report_library/assets/fonts /usr/share/fonts/truetype/ncats && \
+  fc-cache -fsv && \
+  chmod +x ${PCA_REPORT_TOOLS_SRC}/var/getenv && \
+  ln -snf ${PCA_REPORT_TOOLS_SRC}/var/getenv /usr/local/bin && \
   rm sourcecode.tgz
-
-RUN fc-cache -fsv
-
-RUN pip install --no-cache-dir .
-RUN chmod +x ${PCA_REPORT_TOOLS_SRC}/var/getenv
-RUN ln -snf ${PCA_REPORT_TOOLS_SRC}/var/getenv /usr/local/bin
 
 USER cisa
 WORKDIR ${CISA_HOME}
