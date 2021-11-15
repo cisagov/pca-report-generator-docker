@@ -1,5 +1,6 @@
 ARG VERSION=unspecified
-
+# TODO: Update Ubuntu to Alpine with working Python package installations
+# Issue: https://github.com/cisagov/pca-report-generator-docker/issues/11
 FROM python:3.9.6
 
 ARG VERSION
