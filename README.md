@@ -19,29 +19,31 @@ The following Docker commands are available.
 
 An alias can also be set beforehand to remove redundancy.
 
+Parameters can be added at the end. Each defaulting command prints out a help message.
+
 `pca-report-generator` - Creates a PCA report as a PDF
 
 ```console
-docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generator
+docker run -v $(pwd):/home/cisa cisagov/pca-report-generator:0.0.1
 ```
 
 `pca-report-templates` - Exports the Report Mustache template and Manual data
 file template
 
 ```console
-docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-templates
+docker run -v $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library-docker:0.0.1
 ```
 
 `pca-report-compiler` -  Compiles a PCA LaTeX report file,  still in development.
 
 ```console
-docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-compiler
+docker run -v $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library-docker:0.0.1
 ```
 
 `pca-report-generator-bash` - Starts up a `bash` shell in the container
 
 ```console
-docker run -v $(pwd):/home/cisa cisagov/pca-report-generator pca-report-generator-bash
+docker run -v $(pwd):/home/cisa --entrypoint pca-report-generator-bash cisagov/pca-report-generator
 ```
 
 ### Running with Docker Compose ###
