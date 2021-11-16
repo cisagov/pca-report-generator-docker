@@ -37,4 +37,5 @@ RUN wget -O sourcecode.tgz https://github.com/cisagov/pca-report-library/archive
 
 USER cisa
 WORKDIR ${CISA_HOME}
-CMD ["getenv"]
+ENTRYPOINT ["pca-report-generator"]
+CMD ["--help"]
