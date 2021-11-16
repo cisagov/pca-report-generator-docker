@@ -24,4 +24,4 @@ services:
     image: cisagov/pca-report-library
     init: true
     restart: "no"
-    command: pca-report-generator --version
+    command: --version
