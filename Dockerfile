@@ -1,5 +1,6 @@
 ARG VERSION=unspecified
-# TODO: Update python:3.9.6 image to include Alpine with working Python package installations
+# TODO: Switch base Docker image from python:3.9.6 to a current
+# alpine image (e.g. python:3.10.0-alpine)
 # Issue: https://github.com/cisagov/pca-report-generator-docker/issues/11
 FROM python:3.9.6
 
