@@ -27,17 +27,19 @@ execute:
 If no additional parameters are supplied, help text will be output.
 See below for examples:
 
-`pca-report-generator` - Creates a PCA report as a PDF
+`pca-report-generator` - Create a PCA report as a PDF:
 
 ```console
-docker run -v $(pwd):/home/cisa cisagov/pca-report-generator:0.0.1
+docker run --volume $(pwd):/home/cisa cisagov/pca-report-library:0.0.1 MY_ASSESSMENT_ID
 ```
 
-`pca-report-templates` - Exports the Report Mustache template and Manual data
-file template
+`pca-report-templates` - Export the PCA manual data file template or Mustache
+template:
 
 ```console
-docker run -v $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library-docker:0.0.1
+docker run --volume $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library:0.0.1 --manualData
+
+docker run --volume $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library:0.0.1 --LaTeX
 ```
 
 `pca-report-compiler` -  Compiles a PCA LaTeX report file,  still in development.
