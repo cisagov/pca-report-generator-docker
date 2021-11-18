@@ -38,5 +38,7 @@ RUN wget -O sourcecode.tgz https://github.com/cisagov/pca-report-library/archive
 
 USER cisa
 WORKDIR ${CISA_HOME}
+# TODO: Create a shell script to improve the Docker entrypoint
+# Issue: https://github.com/cisagov/pca-report-generator-docker/issues/12
 ENTRYPOINT ["pca-report-generator"]
 CMD ["--help"]
