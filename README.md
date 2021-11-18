@@ -17,9 +17,15 @@ package, which can be used to generate Phishing Campaign Assessment (PCA) report
 
 The following Docker commands are available.
 
-An alias can also be set beforehand to remove redundancy.
+Use `--entrypoint` to select which command within `pca-report-library` to
+execute:
 
-Parameters can be added at the end. Each defaulting command prints out a help message.
+- `pca-report-generator` (this is the default entrypoint)
+- `pca-report-templates`
+- `pca-report-compiler`
+
+If no additional parameters are supplied, help text will be output.
+See below for examples:
 
 `pca-report-generator` - Creates a PCA report as a PDF
 
