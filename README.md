@@ -42,7 +42,8 @@ docker run --volume $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/
 docker run --volume $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library:0.0.1 --LaTeX
 ```
 
-`pca-report-compiler` -  Compiles a PCA LaTeX report file,  still in development.
+`pca-report-compiler` -  Compile a PCA LaTeX report file (still in
+development):
 
 ```console
 docker run -v $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library-docker:0.0.1
