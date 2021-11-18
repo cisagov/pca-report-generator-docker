@@ -194,8 +194,8 @@ Docker:
    or the command line:
 
     ```console
-    git clone https://github.com/cisagov/pca-report-library.git
-    cd example
+    git clone https://github.com/cisagov/pca-report-generator-docker.git
+    cd pca-report-generator-docker
     ```
 
 1. Create the `Dockerfile-x` file with `buildx` platform support:
