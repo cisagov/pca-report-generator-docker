@@ -181,7 +181,7 @@ Build the image locally using this git repository as the [build context](https:/
 docker build \
   --build-arg VERSION=0.0.1 \
   --tag cisagov/pca-report-library:0.0.1 \
-  https://github.com/cisagov/pca-report-library.git#develop
+  https://github.com/cisagov/pca-report-generator-docker.git#develop
 ```
 
 ## Cross-platform builds ##
