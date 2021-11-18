@@ -1,6 +1,8 @@
 ARG VERSION=unspecified
-
-FROM python:3.9.6-alpine
+# TODO: Switch base Docker image from python:3.9.6 to a current
+# alpine image (e.g. python:3.10.0-alpine)
+# Issue: https://github.com/cisagov/pca-report-generator-docker/issues/11
+FROM python:3.9.6
 
 ARG VERSION
 
@@ -12,27 +14,31 @@ LABEL org.opencontainers.image.vendor="Cybersecurity and Infrastructure Security
 
 ARG CISA_UID=421
 ENV CISA_HOME="/home/cisa"
+ENV PCA_REPORT_LIBRARY_SRC="/usr/src/pca-report-tools"
 ENV ECHO_MESSAGE="Hello World from Dockerfile"
 
 RUN addgroup --system --gid ${CISA_UID} cisa \
   && adduser --system --uid ${CISA_UID} --ingroup cisa cisa
 
-RUN apk --update --no-cache add \
-ca-certificates \
-openssl \
-py-pip
+RUN apt-get update && \
+ apt-get install --no-install-recommends -y texlive texlive-bibtex-extra texlive-xetex wget
 
-WORKDIR ${CISA_HOME}
+COPY src/version.txt /src
 
-RUN wget -O sourcecode.tgz https://github.com/cisagov/skeleton-python-library/archive/v${VERSION}.tar.gz && \
+WORKDIR ${PCA_REPORT_LIBRARY_SRC}
+
+RUN wget -O sourcecode.tgz https://github.com/cisagov/pca-report-library/archive/v${VERSION}.tar.gz && \
   tar xzf sourcecode.tgz --strip-components=1 && \
   pip install --requirement requirements.txt && \
-  ln -snf /run/secrets/quote.txt src/example/data/secret.txt && \
+  cp -r src/pca_report_library/assets/fonts /usr/share/fonts/truetype/ncats && \
+  fc-cache -fsv && \
+  chmod +x ${PCA_REPORT_LIBRARY_SRC}/var/getenv && \
+  ln -snf ${PCA_REPORT_LIBRARY_SRC}/var/getenv /usr/local/bin && \
   rm sourcecode.tgz
 
 USER cisa
-
-EXPOSE 8080/TCP
-VOLUME ["/var/log"]
-ENTRYPOINT ["example"]
-CMD ["--log-level", "DEBUG"]
+WORKDIR ${CISA_HOME}
+# TODO: Create a shell script to improve the Docker entrypoint
+# Issue: https://github.com/cisagov/pca-report-generator-docker/issues/12
+ENTRYPOINT ["pca-report-generator"]
+CMD ["--help"]

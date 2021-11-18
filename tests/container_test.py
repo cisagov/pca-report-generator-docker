@@ -1,5 +1,5 @@
 #!/usr/bin/env pytest -vs
-"""Tests for example container."""
+"""Tests for pca-report-library container."""
 
 # Standard Python Libraries
 import os
@@ -8,11 +8,8 @@ import time
 # Third-Party Libraries
 import pytest
 
-ENV_VAR = "ECHO_MESSAGE"
-ENV_VAR_VAL = "Hello World from docker-compose!"
-READY_MESSAGE = "This is a debug message"
-SECRET_QUOTE = (
-    "There are no secrets better kept than the secrets everybody guesses."  # nosec
+PCA_GENERATOR_QUOTE = (
+    '# PCA_GENERATOR_IMAGE, defaults to "cisagov/pca-report-generator" if not set'
 )
 RELEASE_TAG = os.getenv("RELEASE_TAG")
 VERSION_FILE = "src/version.txt"
@@ -28,15 +25,15 @@ def test_container_count(dockerc):
 
 def test_wait_for_ready(main_container):
     """Wait for container to be ready."""
-    TIMEOUT = 10
+    TIMEOUT = 110
     for i in range(TIMEOUT):
-        if READY_MESSAGE in main_container.logs().decode("utf-8"):
+        if PCA_GENERATOR_QUOTE in main_container.logs().decode("utf-8"):
             break
         time.sleep(1)
     else:
         raise Exception(
             f"Container does not seem ready.  "
-            f'Expected "{READY_MESSAGE}" in the log within {TIMEOUT} seconds.'
+            f'Expected "{PCA_GENERATOR_QUOTE}" in the log within {TIMEOUT} seconds.'
         )
 
 
@@ -52,7 +49,9 @@ def test_output(main_container):
     """Verify the container had the correct output."""
     main_container.wait()  # make sure container exited if running test isolated
     log_output = main_container.logs().decode("utf-8")
-    assert SECRET_QUOTE in log_output, "Secret not found in log output."
+    assert (
+        PCA_GENERATOR_QUOTE in log_output
+    ), "PCA_GENERATOR_IMAGE quote not found in log output."
 
 
 @pytest.mark.skipif(

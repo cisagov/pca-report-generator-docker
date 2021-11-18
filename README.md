@@ -1,4 +1,4 @@
-# pca-report-generator-docker 💀🐳 #
+# pca-report-generator-docker #
 
 [![GitHub Build Status](https://github.com/cisagov/pca-report-generator-docker/workflows/build/badge.svg)](https://github.com/cisagov/pca-report-generator-docker/actions/workflows/build.yml)
 [![CodeQL](https://github.com/cisagov/pca-report-generator-docker/workflows/CodeQL/badge.svg)](https://github.com/cisagov/pca-report-generator-docker/actions/workflows/codeql-analysis.yml)
@@ -10,21 +10,49 @@
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/cisagov/example)](https://hub.docker.com/r/cisagov/example)
 [![Platforms](https://img.shields.io/badge/platforms-amd64%20%7C%20arm%2Fv6%20%7C%20arm%2Fv7%20%7C%20arm64%20%7C%20ppc64le%20%7C%20s390x-blue)](https://hub.docker.com/r/cisagov/pca-report-generator-docker/tags)
 
-This is a Docker skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) GitHub Docker project
-started.  This skeleton project contains [licensing
-information](LICENSE), as well as [pre-commit hooks](https://pre-commit.com)
-and [GitHub Actions](https://github.com/features/actions) configurations
-appropriate for Docker containers and the major languages that we use.
+This is a Docker project that containerizes the [pca-report-library](https://github.com/cisagov/pca-report-library)
+package, which can be used to generate Phishing Campaign Assessment (PCA) reports.
 
 ## Running ##
 
-### Running with Docker ###
+The following Docker commands are available.
 
-To run the `cisagov/example` image via Docker:
+Use `--entrypoint` to select which command within `pca-report-library` to
+execute:
+
+- `pca-report-generator` (this is the default entrypoint)
+- `pca-report-templates`
+- `pca-report-compiler`
+
+If no additional parameters are supplied, help text will be output.
+See below for examples:
+
+`pca-report-generator` - Create a PCA report as a PDF:
 
 ```console
-docker run cisagov/example:0.0.1
+docker run --volume $(pwd):/home/cisa cisagov/pca-report-library:0.0.1 MY_ASSESSMENT_ID
+```
+
+`pca-report-templates` - Export the PCA manual data file template or Mustache
+template:
+
+```console
+docker run --volume $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library:0.0.1 --manualData
+
+docker run --volume $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library:0.0.1 --LaTeX
+```
+
+`pca-report-compiler` -  Compile a PCA LaTeX report file (still in
+development):
+
+```console
+docker run --volume $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library:0.0.1 MY_REPORT.tex
+```
+
+Start up a `bash` shell in a `pca-report-library` container:
+
+```console
+docker run -v $(pwd):/home/cisa --entrypoint /bin/bash --interactive --tty cisagov/pca-report-library:0.0.1
 ```
 
 ### Running with Docker Compose ###
@@ -36,66 +64,18 @@ docker run cisagov/example:0.0.1
     version: "3.7"
 
     services:
-      example:
-        image: cisagov/example:0.0.1
+      pca-report-library:
+        image: cisagov/pca-report-library:0.0.1
         volumes:
           - type: bind
             source: <your_log_dir>
-            target: /var/log
-        environment:
-          - ECHO_MESSAGE="Hello from docker-compose"
-        ports:
-          - target: 8080
-            published: 8080
-            protocol: tcp
+            target: /home/cisa
     ```
 
 1. Start the container and detach:
 
     ```console
     docker-compose up --detach
-    ```
-
-## Using secrets with your container ##
-
-This container also supports passing sensitive values via [Docker
-secrets](https://docs.docker.com/engine/swarm/secrets/).  Passing sensitive
-values like your credentials can be more secure using secrets than using
-environment variables.  See the
-[secrets](#secrets) section below for a table of all supported secret files.
-
-1. To use secrets, create a `quote.txt` file containing the values you want set:
-
-    ```text
-    Better lock it in your pocket.
-    ```
-
-1. Then add the secret to your `docker-compose.yml` file:
-
-    ```yaml
-    ---
-    version: "3.7"
-
-    secrets:
-      quote_txt:
-        file: quote.txt
-
-    services:
-      example:
-        image: cisagov/example:0.0.1
-        volumes:
-          - type: bind
-            source: <your_log_dir>
-            target: /var/log
-        environment:
-          - ECHO_MESSAGE="Hello from docker-compose"
-        ports:
-          - target: 8080
-            published: 8080
-            protocol: tcp
-        secrets:
-          - source: quote_txt
-            target: quote.txt
     ```
 
 ## Updating your container ##
@@ -125,7 +105,7 @@ environment variables.  See the
 1. Pull the new image:
 
     ```console
-    docker pull cisagov/example:0.0.1
+    docker pull cisagov/pca-report-library:0.0.1
     ```
 
 1. Recreate and run the container by following the [previous instructions](#running-with-docker).
@@ -139,24 +119,28 @@ containerize.  It is recommended that most users use a version tag (e.g.
 
 | Image:tag | Description |
 |-----------|-------------|
-|`cisagov/example:1.2.3`| An exact release version. |
-|`cisagov/example:1.2`| The most recent release matching the major and minor version numbers. |
-|`cisagov/example:1`| The most recent release matching the major version number. |
-|`cisagov/example:edge` | The most recent image built from a merge into the `develop` branch of this repository. |
-|`cisagov/example:nightly` | A nightly build of the `develop` branch of this repository. |
-|`cisagov/example:latest`| The most recent release image pushed to a container registry.  Pulling an image using the `:latest` tag [should be avoided.](https://vsupalov.com/docker-latest-tag/) |
+|`cisagov/pca-report-library:0.0.1`| An exact release version. |
+|`cisagov/pca-report-library:0.0`| The most recent release matching the major and minor version numbers. |
+|`cisagov/pca-report-library:0`| The most recent release matching the major version number. |
+|`cisagov/pca-report-library:edge` | The most recent image built from a merge into the `develop` branch of this repository. |
+|`cisagov/pca-report-library:nightly` | A nightly build of the `develop` branch of this repository. |
+|`cisagov/pca-report-library:latest`| The most recent release image pushed to a container registry.  Pulling an image using the `:latest` tag [should be avoided.](https://vsupalov.com/docker-latest-tag/) |
 
 See the [tags tab](https://hub.docker.com/r/cisagov/example/tags) on Docker
 Hub for a list of all the supported tags.
 
 ## Volumes ##
 
-| Mount point | Purpose        |
+There are no volumes for this container.
+<!-- | Mount point | Purpose        |
 |-------------|----------------|
-| `/var/log`  |  Log storage   |
+| `/home/cisa`  |  Log storage   | -->
 
 ## Ports ##
 
+There are no ports exposed by this container.
+
+<!--
 The following ports are exposed by this container:
 
 | Port | Purpose        |
@@ -165,30 +149,29 @@ The following ports are exposed by this container:
 
 The sample [Docker composition](docker-compose.yml) publishes the
 exposed port at 8080.
+-->
 
 ## Environment variables ##
 
-### Required ###
+<!-- ### Required ###
 
-There are no required environment variables.
-
-<!--
 | Name  | Purpose | Default |
 |-------|---------|---------|
-| `REQUIRED_VARIABLE` | Describe its purpose. | `null` |
--->
+| `` |  |  | -->
 
 ### Optional ###
 
 | Name  | Purpose | Default |
 |-------|---------|---------|
-| `ECHO_MESSAGE` | Sets the message echoed by this container.  | `Hello World from Dockerfile` |
+| `CISA_HOME` | Sets up as the working directory.  | `/home/cisa` |
+| `PCA_REPORT_TOOLS_SRC` | Set as the directory for the pca-report-library codebase.  | `/usr/src/pca-report-tools` |
 
 ## Secrets ##
 
-| Filename     | Purpose |
+There are no secrets for this container.
+<!-- | Filename     | Purpose |
 |--------------|---------|
-| `quote.txt` | Replaces the secret stored in the example library's package data. |
+| `quote.txt` | Replaces the secret stored in the example library's package data. | -->
 
 ## Building from source ##
 
@@ -197,8 +180,8 @@ Build the image locally using this git repository as the [build context](https:/
 ```console
 docker build \
   --build-arg VERSION=0.0.1 \
-  --tag cisagov/example:0.0.1 \
-  https://github.com/cisagov/example.git#develop
+  --tag cisagov/pca-report-library:0.0.1 \
+  https://github.com/cisagov/pca-report-generator-docker.git#develop
 ```
 
 ## Cross-platform builds ##
@@ -211,8 +194,8 @@ Docker:
    or the command line:
 
     ```console
-    git clone https://github.com/cisagov/example.git
-    cd example
+    git clone https://github.com/cisagov/pca-report-generator-docker.git
+    cd pca-report-generator-docker
     ```
 
 1. Create the `Dockerfile-x` file with `buildx` platform support:
@@ -229,15 +212,8 @@ Docker:
       --platform linux/amd64 \
       --build-arg VERSION=0.0.1 \
       --output type=docker \
-      --tag cisagov/example:0.0.1 .
+      --tag cisagov/pca-report-library:0.0.1 .
     ```
-
-## New repositories from a skeleton ##
-
-Please see our [Project Setup guide](https://github.com/cisagov/development-guide/tree/develop/project_setup)
-for step-by-step instructions on how to start a new repository from
-a skeleton. This will save you time and effort when configuring a
-new repository!
 
 ## Contributing ##
 
