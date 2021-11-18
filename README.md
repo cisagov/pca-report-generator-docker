@@ -46,7 +46,7 @@ docker run --volume $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/
 development):
 
 ```console
-docker run -v $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library-docker:0.0.1
+docker run --volume $(pwd):/home/cisa --entrypoint pca-report-templates cisagov/pca-report-library:0.0.1 MY_REPORT.tex
 ```
 
 `pca-report-generator-bash` - Starts up a `bash` shell in the container
