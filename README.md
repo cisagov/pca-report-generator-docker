@@ -1,8 +1,22 @@
 # pca-report-generator-docker 💀🐳 #
 
+<<<<<<< HEAD
 [![GitHub Build Status](https://github.com/cisagov/pca-report-generator-docker/workflows/build/badge.svg)](https://github.com/cisagov/pca-report-generator-docker/actions/workflows/build.yml)
 [![CodeQL](https://github.com/cisagov/pca-report-generator-docker/workflows/CodeQL/badge.svg)](https://github.com/cisagov/pca-report-generator-docker/actions/workflows/codeql-analysis.yml)
 [![Known Vulnerabilities](https://snyk.io/test/github/cisagov/pca-report-generator-docker/badge.svg)](https://snyk.io/test/github/cisagov/pca-report-generator-docker)
+=======
+[![GitHub Build Status](https://github.com/cisagov/skeleton-docker/workflows/build/badge.svg)](https://github.com/cisagov/skeleton-docker/actions/workflows/build.yml)
+[![CodeQL](https://github.com/cisagov/skeleton-docker/workflows/CodeQL/badge.svg)](https://github.com/cisagov/skeleton-docker/actions/workflows/codeql-analysis.yml)
+[![Known Vulnerabilities](https://snyk.io/test/github/cisagov/skeleton-docker/badge.svg)](https://snyk.io/test/github/cisagov/skeleton-docker)
+<<<<<<< HEAD
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/skeleton-docker.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/skeleton-docker/alerts/)
+<!-- Please use the badges that apply to your Docker image's implementation.
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/cisagov/skeleton-docker.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/skeleton-docker/context:javascript)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/skeleton-docker.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/skeleton-docker/context:python)
+-->
+>>>>>>> 6f639fe050f3435ce9f57989578ee9a10bec3a21
+=======
+>>>>>>> 81f6c715c46ca4b1266a5a3ab1d8a1d041b63411
 
 ## Docker Image ##
 
@@ -43,7 +57,7 @@ docker run cisagov/example:0.0.1
             source: <your_log_dir>
             target: /var/log
         environment:
-          - ECHO_MESSAGE="Hello from docker-compose"
+          - ECHO_MESSAGE="Hello from docker compose"
         ports:
           - target: 8080
             published: 8080
@@ -53,7 +67,7 @@ docker run cisagov/example:0.0.1
 1. Start the container and detach:
 
     ```console
-    docker-compose up --detach
+    docker compose up --detach
     ```
 
 ## Using secrets with your container ##
@@ -88,7 +102,7 @@ environment variables.  See the
             source: <your_log_dir>
             target: /var/log
         environment:
-          - ECHO_MESSAGE="Hello from docker-compose"
+          - ECHO_MESSAGE="Hello from docker compose"
         ports:
           - target: 8080
             published: 8080
@@ -105,13 +119,13 @@ environment variables.  See the
 1. Pull the new image from Docker Hub:
 
     ```console
-    docker-compose pull
+    docker compose pull
     ```
 
 1. Recreate the running container by following the [previous instructions](#running-with-docker-compose):
 
     ```console
-    docker-compose up --detach
+    docker compose up --detach
     ```
 
 ### Docker ###
